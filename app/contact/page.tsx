@@ -111,7 +111,7 @@ export default function ContactPage() {
               <LeadForm
                 title="Send Project Inquiry"
                 subtitle="Fill out the details below and an enterprise architect will review your submission."
-                pageUrl="http://localhost:3000/contact"
+                pageUrl="https://leadminoform.vercel.app/contact"
                 buttonText="Send Secure Message"
                 compact={false}
               />

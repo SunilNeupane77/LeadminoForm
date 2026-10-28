@@ -229,7 +229,7 @@ export default function ServicesPage() {
           <LeadForm
             title="Request Service Proposal"
             subtitle="Tell us which capabilities you require and our Lead Architect will prepare an evaluation."
-            pageUrl="http://localhost:3000/services"
+            pageUrl="https://leadminoform.vercel.app/services"
             buttonText="Submit RFP / Quote Request"
           />
         </div>

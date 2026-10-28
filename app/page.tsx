@@ -176,7 +176,7 @@ export default function Home() {
               <LeadForm
                 title="Schedule Strategic Discovery"
                 subtitle="Connect directly with an Enterprise Principal Architect."
-                pageUrl="http://localhost:3000/hero"
+                pageUrl="https://leadminoform.vercel.app/hero"
                 buttonText="Book Strategic Call"
                 compact={true}
               />
@@ -398,7 +398,7 @@ export default function Home() {
           <LeadForm
             title="Book Your Discovery Session"
             subtitle="Guaranteed 2-hour executive response under mutual NDA."
-            pageUrl="http://localhost:3000/bottom-cta"
+            pageUrl="https://leadminoform.vercel.app/bottom-cta"
             buttonText="Submit Technical Inquiry"
           />
         </div>

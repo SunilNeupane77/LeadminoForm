@@ -150,7 +150,7 @@ export default function Footer() {
               <input type="hidden" name="companyName" value="Website Subscriber" />
               <input type="hidden" name="phone" value="+10000000000" />
               <input type="hidden" name="notes" value="Subscribed to quarterly executive tech briefing" />
-              <input type="hidden" name="page_url" value="http://localhost:3000/footer" />
+              <input type="hidden" name="page_url" value="https://leadminoform.vercel.app/footer" />
 
               {/* Spam Trap */}
               <input

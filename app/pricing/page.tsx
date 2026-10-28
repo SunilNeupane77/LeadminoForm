@@ -208,7 +208,7 @@ export default function PricingPage() {
           <LeadForm
             title="Request Custom Scope & Pricing"
             subtitle="Send your project requirements for a detailed estimate and proposal."
-            pageUrl="http://localhost:3000/pricing"
+            pageUrl="https://leadminoform.vercel.app/pricing"
             buttonText="Get Scope & Estimate"
           />
         </div>

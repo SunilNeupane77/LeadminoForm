@@ -26,6 +26,16 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full antialiased scroll-smooth">
       <head>
+        {/* Canonical domain redirect: ensure all Vercel previews route to the main domain */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (typeof window !== 'undefined' && window.location.hostname.endsWith('.vercel.app') && window.location.hostname !== 'leadminoform.vercel.app') {
+                window.location.replace('https://leadminoform.vercel.app' + window.location.pathname + window.location.search);
+              }
+            `,
+          }}
+        />
         {/* Tailwind CDN guarantees complete, instantaneous styling across all browsers */}
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com" />

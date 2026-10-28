@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 interface LeadFormProps {
   title?: string;
   subtitle?: string;
@@ -10,11 +14,23 @@ interface LeadFormProps {
 export default function LeadForm({
   title = "Request Technical Assessment",
   subtitle = "Our Principal Architects respond within 2 business hours under mutual NDA.",
-  pageUrl = "http://localhost:3000",
+  pageUrl = "https://leadminoform.vercel.app",
   buttonText = "Schedule Strategic Call",
   className = "",
   compact = false,
 }: LeadFormProps) {
+  const [activeUrl, setActiveUrl] = useState(pageUrl);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const hostname = window.location.hostname;
+      if (hostname.includes("vercel.app") && hostname !== "leadminoform.vercel.app") {
+        setActiveUrl(`https://leadminoform.vercel.app${window.location.pathname}`);
+      } else {
+        setActiveUrl(window.location.href);
+      }
+    }
+  }, [pageUrl]);
   return (
     <div
       className={`bg-white rounded-3xl shadow-2xl border border-slate-200/90 p-6 sm:p-8 relative overflow-hidden ${className}`}
@@ -149,7 +165,7 @@ export default function LeadForm({
         />
 
         {/* Origin Tracking URL for LeadMino Attribution */}
-        <input type="hidden" name="page_url" value={pageUrl} />
+        <input type="hidden" name="page_url" value={activeUrl} />
 
         {/* Submit Button */}
         <button
