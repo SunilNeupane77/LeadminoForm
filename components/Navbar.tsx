@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 const NAV_ITEMS = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
+  { label: "Solutions", href: "/services" },
   { label: "Case Studies", href: "/case-studies" },
   { label: "Pricing", href: "/pricing" },
   { label: "Contact", href: "/contact" },
@@ -18,20 +18,20 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200">
+    <header className="sticky top-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-700 to-indigo-500 flex items-center justify-center text-white font-black text-xl shadow-md group-hover:scale-105 transition-transform">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-cyan-400 flex items-center justify-center text-white font-black text-xl shadow-lg shadow-blue-500/25 group-hover:scale-105 transition-transform duration-200">
               ▲
             </div>
             <div>
-              <span className="text-xl font-extrabold tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors">
+              <span className="text-xl font-extrabold tracking-tight text-white group-hover:text-blue-400 transition-colors">
                 ApexFlow
               </span>
-              <span className="hidden sm:inline-block text-xs font-medium text-slate-400 block -mt-1 tracking-wider uppercase">
-                Technologies
+              <span className="hidden sm:inline-block text-[10px] font-bold text-slate-400 block -mt-1 tracking-widest uppercase">
+                Enterprise Cloud & AI
               </span>
             </div>
           </Link>
@@ -44,10 +44,10 @@ export default function Navbar() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-all duration-150 ${
+                  className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-150 ${
                     isActive
-                      ? "text-blue-600 bg-blue-50 font-semibold"
-                      : "text-slate-600 hover:text-slate-900 hover:bg-slate-100/70"
+                      ? "text-blue-400 bg-blue-500/10 border border-blue-500/20 shadow-sm"
+                      : "text-slate-300 hover:text-white hover:bg-slate-800/60"
                   }`}
                 >
                   {item.label}
@@ -60,9 +60,9 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-3">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 shadow-sm hover:shadow transition-all duration-150"
+              className="inline-flex items-center justify-center px-5 py-2.5 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-150 transform hover:-translate-y-0.5"
             >
-              Get Free Consultation
+              Request Discovery
             </Link>
           </div>
 
@@ -71,7 +71,7 @@ export default function Navbar() {
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               type="button"
-              className="p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+              className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800"
               aria-label="Toggle Navigation"
             >
               {mobileMenuOpen ? (
@@ -90,7 +90,7 @@ export default function Navbar() {
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-slate-200 bg-white px-4 pt-2 pb-6 space-y-2">
+        <div className="md:hidden border-b border-slate-800 bg-slate-900/95 px-4 pt-3 pb-6 space-y-2 backdrop-blur-xl">
           {NAV_ITEMS.map((item) => {
             const isActive = pathname === item.href;
             return (
@@ -98,10 +98,10 @@ export default function Navbar() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`block px-3 py-2.5 rounded-lg text-base font-medium ${
+                className={`block px-4 py-2.5 rounded-xl text-base font-semibold ${
                   isActive
-                    ? "text-blue-600 bg-blue-50 font-semibold"
-                    : "text-slate-700 hover:bg-slate-100"
+                    ? "text-blue-400 bg-blue-500/10 border border-blue-500/20"
+                    : "text-slate-300 hover:bg-slate-800 hover:text-white"
                 }`}
               >
                 {item.label}
@@ -112,9 +112,9 @@ export default function Navbar() {
             <Link
               href="/contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="block w-full text-center px-5 py-3 rounded-xl text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 shadow"
+              className="block w-full text-center px-5 py-3 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-blue-600 to-indigo-600 shadow"
             >
-              Get Free Consultation
+              Request Discovery
             </Link>
           </div>
         </div>

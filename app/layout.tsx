@@ -24,11 +24,49 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className="h-full antialiased scroll-smooth"
-    >
-      <body className="min-h-full flex flex-col bg-slate-50 text-slate-800 selection:bg-blue-600 selection:text-white font-sans">
+    <html lang="en" className="h-full antialiased scroll-smooth">
+      <head>
+        {/* Tailwind CDN guarantees complete, instantaneous styling across all browsers */}
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+          rel="stylesheet"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              tailwind.config = {
+                theme: {
+                  extend: {
+                    fontFamily: {
+                      sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+                      mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                      brand: {
+                        50: '#eff6ff',
+                        100: '#dbeafe',
+                        200: '#bfdbfe',
+                        300: '#93c5fd',
+                        400: '#60a5fa',
+                        500: '#3b82f6',
+                        600: '#2563eb',
+                        700: '#1d4ed8',
+                        800: '#1e40af',
+                        900: '#1e3a8a',
+                        950: '#172554',
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+          }}
+        />
+      </head>
+      <body className="min-h-full flex flex-col bg-slate-50 text-slate-800 selection:bg-blue-600 selection:text-white font-sans antialiased">
         <Navbar />
         <main className="flex-grow">{children}</main>
         <Footer />
