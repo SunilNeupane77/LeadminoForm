@@ -143,7 +143,7 @@ export default function Footer() {
 
             <form
               method="post"
-              action="https://app.leadmino.com/public/forms/v23VKJBQh963B-ln"
+              action="https://app.leadmino.com/public/forms/Rbe09fPRLbXp1fl0"
               className="space-y-2"
             >
               <input type="hidden" name="name" value="Executive Briefing Subscriber" />
