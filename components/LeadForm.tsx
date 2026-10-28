@@ -39,9 +39,10 @@ export default function LeadForm({
 
       {/* LeadMino Form Integration */}
       <form
+        id="lead-capture-form"
         method="post"
         action="https://app.leadmino.com/public/forms/v23VKJBQh963B-ln"
-        className="space-y-4"
+        className="space-y-4 lead-capture-form"
       >
         <div className={`grid gap-4 ${compact ? "grid-cols-1" : "grid-cols-1 sm:grid-cols-2"}`}>
           {/* Full Name */}
