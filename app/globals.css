@@ -31,3 +31,29 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #475569;
 }
+
+/* Submit Button Protection: Guarantees button text & icons are always solid white and visible */
+#lead-submit-btn,
+#lead-capture-form button[type="submit"] {
+  background-color: #2563eb !important;
+  color: #ffffff !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+#lead-submit-btn *,
+#lead-capture-form button[type="submit"] * {
+  color: #ffffff !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+#lead-submit-btn:hover,
+#lead-capture-form button[type="submit"]:hover {
+  background-color: #1d4ed8 !important;
+}
+
+#lead-submit-btn:active,
+#lead-capture-form button[type="submit"]:active {
+  background-color: #1e40af !important;
+}
