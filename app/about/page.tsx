@@ -1,5 +1,12 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import {
+  ShieldCheckIcon,
+  ZapIcon,
+  CpuIcon,
+  GlobeIcon,
+  ArrowRightIcon,
+} from "@/components/Icons";
 
 export const metadata: Metadata = {
   title: "About Us | ApexFlow Technologies",
@@ -36,22 +43,22 @@ const LEADERSHIP = [
 
 const VALUES = [
   {
-    icon: "🎯",
+    icon: ZapIcon,
     title: "Engineering Rigor",
     desc: "We write maintainable, tested, and self-healing systems. No shortcuts, no fragile hacks.",
   },
   {
-    icon: "🛡️",
+    icon: ShieldCheckIcon,
     title: "Security Without Compromise",
     desc: "Every line of code and infrastructure config undergoes automated vulnerability analysis and strict access scoping.",
   },
   {
-    icon: "⚡",
+    icon: CpuIcon,
     title: "Radical Velocity",
     desc: "We reduce enterprise development cycles from quarters to weeks through reusable accelerators and autonomous tooling.",
   },
   {
-    icon: "🤝",
+    icon: GlobeIcon,
     title: "Obsessive Client Partnership",
     desc: "We integrate directly with your engineering teams, transferring knowledge and mentoring along the journey.",
   },
@@ -68,29 +75,29 @@ export default function AboutPage() {
   return (
     <div className="bg-slate-50 min-h-screen">
       {/* Header Banner */}
-      <section className="bg-slate-900 text-white py-20 border-b border-slate-800">
+      <section className="bg-slate-950 text-white py-24 border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="text-xs font-bold uppercase tracking-widest text-blue-400">
+          <span className="text-xs font-bold uppercase tracking-widest text-cyan-400">
             About ApexFlow Technologies
           </span>
-          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mt-3">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight mt-3">
             Pioneering the Future of Enterprise Systems
           </h1>
-          <p className="text-slate-300 text-lg max-w-3xl mx-auto mt-4 leading-relaxed">
+          <p className="text-slate-300 text-base sm:text-lg max-w-3xl mx-auto mt-4 leading-relaxed">
             Founded by veteran cloud architects and systems engineers, ApexFlow was created to eliminate the friction between enterprise vision and reliable, scalable technology execution.
           </p>
         </div>
       </section>
 
       {/* Narrative Section */}
-      <section className="py-20 bg-white border-b border-slate-200">
+      <section className="py-24 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <span className="text-xs font-bold uppercase tracking-widest text-blue-600">
                 Our Story
               </span>
-              <h2 className="text-3xl font-extrabold text-slate-900">
+              <h2 className="text-3xl sm:text-4xl font-black text-slate-900 leading-tight">
                 Architecting Confidence in an Uncertain Digital World
               </h2>
               <p className="text-slate-600 leading-relaxed text-base">
@@ -102,30 +109,31 @@ export default function AboutPage() {
               <div className="pt-2">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm shadow transition"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm shadow-md transition"
                 >
-                  Partner With Us →
+                  <span>Partner With Us</span>
+                  <ArrowRightIcon className="w-4 h-4" />
                 </Link>
               </div>
             </div>
 
-            {/* Quick Metrics Cards */}
+            {/* Metrics Grid */}
             <div className="grid grid-cols-2 gap-4">
-              <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 text-center">
-                <span className="text-4xl font-extrabold text-blue-600">2018</span>
-                <p className="text-xs font-medium text-slate-500 uppercase tracking-wider mt-1">Founded</p>
+              <div className="p-8 rounded-3xl bg-slate-50 border border-slate-200 text-center shadow-sm">
+                <span className="text-4xl sm:text-5xl font-black text-blue-600 font-mono">2018</span>
+                <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mt-2">Founded</p>
               </div>
-              <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 text-center">
-                <span className="text-4xl font-extrabold text-blue-600">180+</span>
-                <p className="text-xs font-medium text-slate-500 uppercase tracking-wider mt-1">Engineers & Architects</p>
+              <div className="p-8 rounded-3xl bg-slate-50 border border-slate-200 text-center shadow-sm">
+                <span className="text-4xl sm:text-5xl font-black text-blue-600 font-mono">180+</span>
+                <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mt-2">Engineers & Architects</p>
               </div>
-              <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 text-center">
-                <span className="text-4xl font-extrabold text-blue-600">4</span>
-                <p className="text-xs font-medium text-slate-500 uppercase tracking-wider mt-1">Global Tech Hubs</p>
+              <div className="p-8 rounded-3xl bg-slate-50 border border-slate-200 text-center shadow-sm">
+                <span className="text-4xl sm:text-5xl font-black text-blue-600 font-mono">4</span>
+                <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mt-2">Global Tech Hubs</p>
               </div>
-              <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 text-center">
-                <span className="text-4xl font-extrabold text-blue-600">100%</span>
-                <p className="text-xs font-medium text-slate-500 uppercase tracking-wider mt-1">Enterprise Retention</p>
+              <div className="p-8 rounded-3xl bg-slate-50 border border-slate-200 text-center shadow-sm">
+                <span className="text-4xl sm:text-5xl font-black text-blue-600 font-mono">100%</span>
+                <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mt-2">Enterprise Retention</p>
               </div>
             </div>
           </div>
@@ -133,40 +141,45 @@ export default function AboutPage() {
       </section>
 
       {/* Core Values */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="text-xs font-bold uppercase tracking-widest text-blue-600">
               Guiding Principles
             </span>
-            <h2 className="text-3xl font-extrabold text-slate-900 mt-2">
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mt-2">
               The Standards We Uphold Every Day
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {VALUES.map((v) => (
-              <div
-                key={v.title}
-                className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition"
-              >
-                <div className="text-3xl mb-4">{v.icon}</div>
-                <h3 className="text-lg font-bold text-slate-900 mb-2">{v.title}</h3>
-                <p className="text-sm text-slate-600 leading-relaxed">{v.desc}</p>
-              </div>
-            ))}
+            {VALUES.map((v) => {
+              const IconComp = v.icon;
+              return (
+                <div
+                  key={v.title}
+                  className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition"
+                >
+                  <div className="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mb-5">
+                    <IconComp className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900 mb-2">{v.title}</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">{v.desc}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* Leadership Team */}
-      <section id="leadership" className="py-20 bg-white border-t border-slate-200">
+      <section id="leadership" className="py-24 bg-white border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="text-xs font-bold uppercase tracking-widest text-blue-600">
               Executive Leadership
             </span>
-            <h2 className="text-3xl font-extrabold text-slate-900 mt-2">
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mt-2">
               Visionary Systems Thinkers
             </h2>
           </div>
@@ -175,14 +188,14 @@ export default function AboutPage() {
             {LEADERSHIP.map((lead) => (
               <div
                 key={lead.name}
-                className="bg-slate-50 rounded-2xl p-6 border border-slate-200 text-center flex flex-col justify-between"
+                className="bg-slate-50 rounded-3xl p-8 border border-slate-200 text-center flex flex-col justify-between"
               >
                 <div>
-                  <div className="w-20 h-20 rounded-full bg-gradient-to-tr from-blue-700 to-indigo-500 text-white font-extrabold text-2xl flex items-center justify-center mx-auto mb-4 shadow-md">
+                  <div className="w-20 h-20 rounded-full bg-gradient-to-tr from-blue-700 to-indigo-500 text-white font-black text-2xl flex items-center justify-center mx-auto mb-5 shadow-lg shadow-blue-500/25">
                     {lead.image}
                   </div>
                   <h3 className="text-lg font-bold text-slate-900">{lead.name}</h3>
-                  <p className="text-xs font-semibold text-blue-600 mb-3">{lead.role}</p>
+                  <p className="text-xs font-bold text-blue-600 mb-3">{lead.role}</p>
                   <p className="text-xs text-slate-600 leading-relaxed">{lead.bio}</p>
                 </div>
               </div>
@@ -192,13 +205,13 @@ export default function AboutPage() {
       </section>
 
       {/* Global Presence */}
-      <section className="py-20 bg-slate-900 text-white">
+      <section className="py-24 bg-slate-950 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-widest text-blue-400">
+            <span className="text-xs font-bold uppercase tracking-widest text-cyan-400">
               Worldwide Reach
             </span>
-            <h2 className="text-3xl font-extrabold text-white mt-2">
+            <h2 className="text-3xl sm:text-4xl font-black text-white mt-2">
               Global Support, Local Accountability
             </h2>
           </div>
@@ -207,12 +220,12 @@ export default function AboutPage() {
             {OFFICES.map((office) => (
               <div
                 key={office.city}
-                className="p-6 rounded-2xl bg-slate-800/80 border border-slate-700 space-y-2"
+                className="p-8 rounded-3xl bg-slate-900 border border-slate-800 space-y-2"
               >
-                <div className="text-blue-400 font-bold text-lg">{office.city}</div>
+                <div className="text-cyan-400 font-extrabold text-xl">{office.city}</div>
                 <p className="text-xs text-slate-300">{office.address}</p>
                 <p className="text-xs text-slate-400">{office.country}</p>
-                <p className="text-xs font-mono text-blue-300 pt-2">{office.phone}</p>
+                <p className="text-xs font-mono text-blue-400 pt-3">{office.phone}</p>
               </div>
             ))}
           </div>
