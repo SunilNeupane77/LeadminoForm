@@ -12,20 +12,6 @@ interface LeadFormProps {
   compact?: boolean;
 }
 
-const SERVICE_PILLS = [
-  "Cloud Architecture",
-  "Enterprise AI & RAG",
-  "Zero-Trust Security",
-  "Distributed Systems",
-  "Managed 24/7 DevOps",
-];
-
-const TIMELINE_OPTIONS = [
-  "Immediate (< 30 Days)",
-  "Next Quarter (Q1/Q2)",
-  "Technical Discovery / RFP",
-];
-
 export default function LeadForm({
   title = "Request Technical Assessment",
   subtitle = "Our Principal Architects respond within 2 business hours under mutual NDA.",
@@ -35,14 +21,12 @@ export default function LeadForm({
   compact = false,
 }: LeadFormProps) {
   const [activeUrl, setActiveUrl] = useState(pageUrl);
-  const [selectedServices, setSelectedServices] = useState<string[]>(["Cloud Architecture"]);
-  const [selectedTimeline, setSelectedTimeline] = useState<string>("Immediate (< 30 Days)");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     companyName: "",
-    userNotes: "",
+    notes: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -57,28 +41,15 @@ export default function LeadForm({
     }
   }, [pageUrl]);
 
-  const toggleService = (service: string) => {
-    if (selectedServices.includes(service)) {
-      if (selectedServices.length > 1) {
-        setSelectedServices(selectedServices.filter((s) => s !== service));
-      }
-    } else {
-      setSelectedServices([...selectedServices, service]);
-    }
-  };
-
-  // Calculate completion percentage
+  // Calculate completion percentage based purely on what the user fills
   const filledCount = [
     formData.name.trim(),
     formData.email.trim(),
     formData.phone.trim(),
     formData.companyName.trim(),
-    formData.userNotes.trim(),
+    formData.notes.trim(),
   ].filter(Boolean).length;
   const progressPercent = Math.round((filledCount / 5) * 100);
-
-  // Combined notes combining chosen services, timeline, and user text
-  const combinedNotes = `[Focus Area: ${selectedServices.join(", ")}] | [Timeline: ${selectedTimeline}]\n\nRequirements:\n${formData.userNotes || "General architecture assessment requested."}`;
 
   return (
     <div
@@ -88,7 +59,7 @@ export default function LeadForm({
       <div className="absolute top-0 left-0 right-0 h-1.5 bg-slate-100">
         <div
           className="h-full bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-400 transition-all duration-300"
-          style={{ width: `${Math.max(progressPercent, 15)}%` }}
+          style={{ width: `${Math.max(progressPercent, 10)}%` }}
         ></div>
       </div>
 
@@ -113,35 +84,6 @@ export default function LeadForm({
           </p>
         )}
       </div>
-
-      {/* Service Focus Area Selector (Interactive Pills) */}
-      {!compact && (
-        <div className="mb-5 pb-5 border-b border-slate-100">
-          <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
-            1. Select Primary Architectural Focus
-          </label>
-          <div className="flex flex-wrap gap-1.5">
-            {SERVICE_PILLS.map((service) => {
-              const isSelected = selectedServices.includes(service);
-              return (
-                <button
-                  key={service}
-                  type="button"
-                  onClick={() => toggleService(service)}
-                  className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-150 cursor-pointer ${
-                    isSelected
-                      ? "bg-blue-600 text-white shadow-sm shadow-blue-500/25 ring-2 ring-blue-600/30"
-                      : "bg-slate-100 text-slate-700 hover:bg-slate-200"
-                  }`}
-                >
-                  {isSelected ? "✓ " : "+ "}
-                  {service}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-      )}
 
       {/* LeadMino Form Integration */}
       <form
@@ -263,35 +205,7 @@ export default function LeadForm({
           </div>
         </div>
 
-        {/* Timeline Preference */}
-        {!compact && (
-          <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
-              Target Rollout Timeline
-            </label>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-              {TIMELINE_OPTIONS.map((timeline) => {
-                const isSelected = selectedTimeline === timeline;
-                return (
-                  <button
-                    key={timeline}
-                    type="button"
-                    onClick={() => setSelectedTimeline(timeline)}
-                    className={`py-2 px-3 rounded-xl text-xs font-medium text-center border transition-all cursor-pointer ${
-                      isSelected
-                        ? "border-blue-600 bg-blue-50 text-blue-900 font-bold"
-                        : "border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100"
-                    }`}
-                  >
-                    {timeline}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-        )}
-
-        {/* Message / Scope */}
+        {/* Message / Scope - Clean user entered notes */}
         <div>
           <div className="flex justify-between items-center mb-1">
             <label
@@ -301,21 +215,19 @@ export default function LeadForm({
               Project Scope & Architecture Requirements <span className="text-red-500">*</span>
             </label>
             <span className="text-[11px] text-slate-400 font-mono">
-              {formData.userNotes.length} chars
+              {formData.notes.length} chars
             </span>
           </div>
           <textarea
             id={`notes-${pageUrl}`}
+            name="notes"
             rows={compact ? 3 : 4}
-            placeholder="Describe your current tech stack, concurrency goals, or migration timeline..."
+            placeholder="Describe your current tech stack, concurrency goals, or project requirements..."
             required
-            value={formData.userNotes}
-            onChange={(e) => setFormData({ ...formData, userNotes: e.target.value })}
+            value={formData.notes}
+            onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
             className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/80 text-slate-900 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white focus:border-transparent transition duration-150 shadow-inner resize-none"
           ></textarea>
-
-          {/* Hidden actual notes input submitted to LeadMino with complete details */}
-          <input type="hidden" name="notes" value={combinedNotes} />
         </div>
 
         {/* Spam Trap Field: Strictly hidden from humans */}
