@@ -84,7 +84,7 @@ export default function RootLayout({
         {/* LeadMino CRM Lead Capture Script */}
         <Script
           async
-          src="https://app.leadmino.com/public/capture/Rbe09fPRLbXp1fl0.js"
+          src="https://app.leadmino.com/public/capture/IEhTyUTKP4AlNmcl.js"
           strategy="afterInteractive"
         />
       </body>

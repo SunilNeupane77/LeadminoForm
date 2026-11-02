@@ -89,7 +89,7 @@ export default function LeadForm({
       <form
         id="lead-capture-form"
         method="post"
-        action="https://app.leadmino.com/public/forms/Rbe09fPRLbXp1fl0"
+        action="https://app.leadmino.com/public/forms/IEhTyUTKP4AlNmcl"
         onSubmit={() => setIsSubmitting(true)}
         className="space-y-4 lead-capture-form"
       >
